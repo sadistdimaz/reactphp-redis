@@ -1,8 +1,8 @@
 {
-    "name": "clue/redis-react",
+    "name": "sadistdimaz/redis-react",
     "description": "Async Redis client implementation, built on top of ReactPHP.",
     "keywords": ["Redis", "database", "client", "async", "ReactPHP"],
-    "homepage": "https://github.com/clue/reactphp-redis",
+    "homepage": "https://github.com/sadistdimaz/reactphp-redis",
     "license": "MIT",
     "authors": [
         {
