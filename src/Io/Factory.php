@@ -105,7 +105,8 @@ class Factory
         });
 
         // use `?password=secret` query or `user:secret@host` password form URL
-        if (isset($args['password']) || isset($parts['pass'])) {
+        if (isset($args['password']) || isset($parts['pass']) && isset($args['username']) || isset($parts['user'])) {
+            $user = $args['username'] ?? rawurldecode($parts['user']);
             $pass = $args['password'] ?? rawurldecode($parts['pass']);
             $promise = $promise->then(function (StreamingClient $redis) use ($pass, $uri) {
                 return $redis->auth($pass)->then(
