@@ -102,10 +102,10 @@ class Factory
         // use `?password=secret` query or `user:secret@host` password form URL
         $pass = isset($args['password']) ? $args['password'] : (isset($parts['pass']) ? rawurldecode($parts['pass']) : null);
         if (isset($args['password']) || isset($parts['pass']) && isset($args['username']) || isset($parts['user'])) {
-            $pass = isset($args['username']) ? $args['username'] : rawurldecode($parts['user']);
+            $username = isset($args['username']) ? $args['username'] : rawurldecode($parts['user']);
             $pass = isset($args['password']) ? $args['password'] : rawurldecode($parts['pass']);
-            $promise = $promise->then(function (StreamingClient $redis) use ($pass, $uri) {
-                return $redis->auth($pass)->then(
+            $promise = $promise->then(function (StreamingClient $redis) use ($username, $pass, $uri) {
+                return $redis->auth($username, $pass)->then(
                     function () use ($redis) {
                         return $redis;
                     },
